@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <title>Online Voting System-Registration</title>
+        <link rel="stylesheet" href="../css/stylesheet.css">
+    </head>
+    <body>
+        <style>
+            #address{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+            #imagepart{
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 10px;
+                width: 28%;
+            }
+
+            #role{
+                border:1px solid black;
+                padding: 10px;
+                border-radius: 5px;
+                width: 28%;
+
+            }
+
+            #role select{
+                padding: 5px;
+                border-radius: 5px;
+                width: 20%;
+            }
+
+            #name{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+
+            #mobile_no{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+            #adhaar{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+            #cadhaar{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+            #password{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+            #password_confirm{
+                padding: 7px;
+                border:1px solid black;
+                border-radius:5px;
+                width: 30%;
+            }
+        </style>
+        <center>
+            <div id="headerSection">
+                <h1>Online Voting System</h1>
+            </div>
+            <hr>
+            <div id="bodySection">
+                <h2>Registration</h2>
+                <form name="form" action="../api/register.php" method="POST" enctype="multipart/form-data">
+                    <input id="name" type="text" name="name" placeholder="Enter Fullname" required>
+                    <p id="mobile_error"></p>
+                    <input type="tel" name="mobile" id="mobile_no" placeholder="Enter mobile" pattern="[0-9]{10}" required>
+                    <br><br>
+                    <p id="adhaar_error"></p>
+                    <input type="password" name="adhaar" placeholder="Enter adharnumber" required id="adhaar">
+                    <p id="cadhaar_error"></p>
+                    <input type="password" name="cadhaar" placeholder="Confirm adharnumber" required id="cadhaar"><br><br>
+                    <input type="password" name="password" placeholder="Enter password" required id="password">
+                    <p id="password_error"></p>
+                    <input type="password" name="cpassword" placeholder="Confirm password" required id="password_confirm"><br><br>
+                    <input id="address" type="text" name="address" placeholder="Address" required><br><br>
+                    
+                        <div id="imagepart">
+                            Upload image: <input type="file" name="photo" required>
+                        </div>
+                        <br>
+                        <div id="role" hidden="hidden">
+                            Select your role: <select name="role">
+                                <option value="1">Voter</option>
+                                <option value="2">Group</option>
+                            </select>
+                        </div>
+                        <br>
+                    
+                    <button
+                        style="padding: 5px;
+                        font-size: 15px;
+                        background-color: blue;
+                        color: white;
+                        border-radius: 5px;">
+                    Register</button><br><br>
+                    Already user? <a href="../index.html">Login here</a> 
+                </form>
+
+            </div>
+        </center>
+        
+    </body>
+
+    <script>
+        var mobile_no = document.getElementById('mobile_no');
+        var mobile_error = document.getElementById('mobile_error');
+        var password = document.getElementById('password');
+        var password_confirm = document.getElementById('password_confirm');
+        var password_error  = document.getElementById('password_error');
+        var adhaar = document.getElementById('adhaar');
+        var cadhaar = document.getElementById('cadhaar');
+        var adhaar_error  = document.getElementById('adhaar_error');
+
+        
+        mobile_no.addEventListener('input', () => 
+        {
+            var phoneno = /^\d{10}$/;
+            if(mobile_no.value.match(phoneno))
+            {
+                mobile_error.textContent = '';
+                return true;
+            }
+            else if(mobile_no.value.length == 0) {
+                mobile_error.textContent = '';
+            }
+            else
+            {
+                mobile_error.textContent = 'Invalid Mobile Number!';
+                mobile_error.style.color = 'red';
+                mobile_error.style.fontWeight = 'bold';
+                return false;
+            }
+        });
+
+        password_confirm.addEventListener('input', () => {
+
+            if(password.value == password_confirm.value)
+            {
+                password_error.textContent = '';
+                return true;
+            }
+            else if(password_confirm.value.length == 0) {
+                password_error.textContent = '';
+            }
+            else if(password.value != password_confirm.value)
+            {
+                password_error.textContent = 'Password and Confirm password does not match!';
+                password_error.style.color = 'red';
+                password_error.style.fontWeight = 'bold';
+                return false;
+            }
+
+        });
+
+
+        adhaar.addEventListener('input', () => 
+        {
+            var adhaarno = /^\d{12}$/;
+            if(adhaar.value.match(adhaarno ))
+            {
+                adhaar_error.textContent = '';
+                return true;
+            }
+            else if(adhaar.value.length == 0) {
+                adhaar_error.textContent = '';
+            }
+            else
+            {
+                adhaar_error.textContent = 'Invalid adhaarnumbe!r';
+                adhaar_error.style.color = 'red';
+                adhaar_error.style.fontWeight = 'bold';
+                return false;
+            }
+        });
+
+
+        cadhaar.addEventListener('input', () => {
+
+            if(adhaar.value == cadhaar.value)
+            {
+                cadhaar_error.textContent = '';
+                return true;
+            }
+            else if(cadhaar.value.length == 0) {
+                cadhaar_error.textContent = '';
+            }
+            else if(adhaar.value != cadhaar.value)
+            {
+                cadhaar_error.textContent = 'Adhaarnumber and confirm adhaarnumber does not match!';
+                cadhaar_error.style.color = 'red';
+                cadhaar_error.style.fontWeight = 'bold';
+                return false;
+            }
+
+        });
+
+    </script>
+</html>

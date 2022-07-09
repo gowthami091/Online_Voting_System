@@ -1,0 +1,54 @@
+body{
+    
+    background-color: palegreen;
+}
+
+#imagecss{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 35%;
+}
+
+#headerSection{
+    padding: 5px;
+}
+
+#headerSection h1{
+    font-family: Cursive;
+}
+
+#input{
+    padding: 7px;
+    width: 15%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#adhaar{
+    padding: 7px;
+    width: 15%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#password{
+    padding: 7px;
+    width: 15%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#dropbox{
+    padding: 5px;
+    border-radius: 5px;
+    width: 7%;
+}
+
+#loginbtn{
+    padding: 5px;
+    font-size: 15px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+
+}
